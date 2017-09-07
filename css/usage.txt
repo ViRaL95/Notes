@@ -1,0 +1,7 @@
+ul:
+	List Style Type: None (Removes bullet points)
+	overflow: hidden (If past certain size, content can't be seen anymore)
+
+a:
+	text-decoration: None (Removes underlines)
+	

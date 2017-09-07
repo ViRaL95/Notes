@@ -1,0 +1,5 @@
+The provider of a resource or a service is known as a server
+The service requesters are called clients 
+Client sends a request and the server returns a response. 
+To formalize data exchange even futher, the server may implement an application programming interface (API)
+

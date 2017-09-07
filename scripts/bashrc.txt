@@ -1,0 +1,4 @@
+.bashrc is a shell script that Bash runs for interactive non-login shells
+.bash_profile is executed for login shells
+.profile is executed for shells not related to Bash
+

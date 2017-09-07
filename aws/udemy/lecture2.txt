@@ -1,0 +1,35 @@
+Amazon Simple Storage Service also known as Amazon S3
+
+There is a server, harddrivers, elastic load balancers. But we dont concern ourselves with that. We just need to kno that we can create a bucket on amazon s3 put objects on it and keep adding objects to it and delete it wehen we dont need it anymore. 
+
+Storage
+Amazon Glacier is the long term archiving of data, for example you might have data inside AMaozn S3 and overtime that data is not needed anymore. It might be accounting records. We can move that to Glacier.
+
+It can take 3-4 hours to take it from glacier to amazon s3. 
+
+Elastic Block Storage is like disk drive. Just as the same as you can attach a hard drive to your desktop computer you can do the same, attach an EBS volume to an EC2 server. This will allow additional storage to thata server. 
+
+Storage Gateway
+Highspeed link between on premise storage to AWS so if you would like to have a backup solution to your on premise data storage you can create a high speed network between AWS and onsite storage. 
+
+EFS
+Elastic File Storage similar to a NES to your network at home. This allows mmultiple servers accessing the same storage. 
+
+AWS Import Export Snowball
+A portable harddrive. One with massive capacity. If you have offsite storage on AWS and you have pettabytes of data that you need to get into AWS. You can get an AWS snowball sent to you, and send it back to AWS and itll import it for you.
+
+For example if you check storage1.png
+
+We have the AWS cloud, inside of it we have a VPC (Virtual Private Cloud). This is a personal private space inside of the AWS cloud. If traffic wants to come inside the VPC it will be blocked and it will not be able to get inside the VPC. All AWS accounts will have a VPC created in each region, additional to that you can create more VPCs if you would like to. Within each VPC you can launch EC2 instances and attach EBS volumes to them (for extra space). You cant attach multiple EC2 instances to one EBS, for example you cant have multiple computers attached to the same hard drive.
+
+The way that we have multiple ec2 instanaces accessing one device is we use the Elastic file Service. The EFS is not located in the VPC but inside the Cloud.  For those EC2 servers to access those EFS share it needs to have an EFS mount target. 
+
+We can also hae the VPC retriever information from the S3 bucket which eventually transfers over into the Glacier. If we want information frmo the glacier back into the S3 bucket itll take 3-4 hours to do that. In order for the VPC to access the S3 through an endpoint.
+
+SEE hybridstorage.png
+
+Hybrid Storage Example
+A disaster recovery solution for backup and synchronization of data. We have the AWS cloud on the left hand side and the corporate data center on the right. We would like to replicate that data on the right onto Amazon S3. In order to do this through a high speed link etc. This is why we use the snowball device, which is sent to our corporate data center. We upload the petabyte of data to thr snowball deve. AWS will grab our snowball device and upload it into the S3 bucket. In order to synchronize the data from the onsite storage to the S3 bucket quickliy we use the AWS Storage Gateway.
+
+We are now going to create an S3 bucket on the AWS cloud
+We are going to the AWS Management Console inside the browswer and upload files onto the S3 bucket and grab items from the S3 bucket, and we will delete it so we dont get a big bill at the end of the month. 

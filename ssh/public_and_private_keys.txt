@@ -1,0 +1,7 @@
+To avoid using passwords when connecting to a virtual private server one can use SSH keys. Generating a key pair provides you with two long strings of charcers: a public and a private key. You can place the public key on any server and then unblock it by connecting to it with a client that already has the private key. After generating the public and private key you can take your public SSH key and add it to the server. 
+
+For example, lets say you wanted to SSH into GitLab. You would create a new SSH key pair using the command ssh-keygen -t rsa -C "your.email@example.com" -b 4096. If you choose the default configurtion settings, the public SSH key will be placed in id_rsa.pub and the private SSH key will be placed in id_rsa. We can then copy the public SSH key onto gitlab. 
+
+After doing so one must add their private key to the ssh-agent. To do this one should run ssh-add. ssh-add command prompts the user for a private key password and addits it to the list maintained by ssh-agent. 
+
+ssh-agent is a background program that handles passwords for SSH Private keys.

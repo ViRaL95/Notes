@@ -1,0 +1,209 @@
+AWS Global Infrastructure
+There are a total of 16 regions, 43 availability zones, 50+  edge locations. The US east standard region is predominantly used because it has the most services and latest infrastruture. Not all regions are the same price. 
+
+Each region is split into availability zones. Us east is split into 3 availability zones. Many availability zones allow you to have high availability, and good for disaster recovery. If your infrastrucre is shared across several availability zones, if one availability zone goes out you can recover. 
+
+Cloud Front 
+
+Cloud front is a caching service for AWS and it gets your content in a cloud front distribution and it locates it specifically at these edge locations. Which means youll get very high delivery content at these locations. 
+
+What is Cloud Computing?
+
+Cloud Computing Provides shared computer processing resources and data to computers and other devices on demand.
+
+There are 3 main Cloud Computing Models
+IAAS (Infrastructre as a Service)
+The Low Level model is IAAS (Infrastructure as a Service), which contains the basic building blocks of Cloud IT. A good example of this is the AWS Virtual Private Cloud.The Elastic Compute Cloud, where we can create linux servers or Windows servers inside our VPC. Elastic Block Storage is storage which we can attach to our EC2 instances.
+
+PAAS(Platform as a service)
+This is where AWS manages the hardware and operating system here. A good example is when you have to create a database. Y ou can use the EC2 server inside of a VPC and have an EBS attached to it and you can put your database application ontop of that server. RDS (Relational Database Service) this takes care of the linux operating system, and the EC2 Instances and all you have to worry about is the datbasae itself. 
+
+SAAS(Software As A Service):
+This is where the application is run and generally refers to end user applications. An example of this is when a Web based email where you got a browser and you access your email. That is a software as a service. You dont need to worry about whats behind that you use it as service. Microsoft Accses 365, and SalesForce are also SAAS where yo udont have to worry about the architecutre and operating system behind these services
+
+Servless Computing
+Allows you to build and run applications and services without thinking about servers. This is also referred to as a Function as a service (FAAS). Example of this is Amazon S3, AWS Lambda, Amazon DynamoDB, Amazon SNS. 
+
+CloudComputing Deployment Models:
+
+Cloud: Fully developed in the cloud and all parts of the application run in the cloud.
+
+Hybrid: Connectiong infrastructure and applications between cloud based resources and our existing resources that are not connected in the cloud
+
+On-premises: 100% of our cloud computing is deployed on our own infrastructure
+
+Some of the things that are discussed in this lecture 
+
+Compute
+Storage 
+Database 
+Network and Content Delivery
+Management Tools
+Security Identity and Compliance
+Messaging
+Analytics 
+
+EC2
+Where we deploy our virtual server (Windows Server, Linux) 
+We treat this server like we treat any other server, configure firewalls perform updates 
+
+ECS (Elastic Container Service)
+This takes EC2 to another level.
+This allows us to deploy docker containers which will package up everything that needs the server to be deployed. This will have our application inside it as well. We can then package this up and deploy this as a container. This has advantages vs having our application running on an EC2 because if our EC2 needs to be upgraded then there will be problems within the EC2. However if we package everything as a docker container, which allows us to make sure everything is working offline before we deploy everything onto our EC2 servies. 
+
+Elastic Load Balancer (ELB)
+If we have multiple ec2 instances were going to need to have a way to submit requests to those EC2 Instances and make sure the connection between those instances balnaced.
+
+Autoscaling
+If we are hit with a peak in demand, then we can launch more EC2 instances when demand increases. 
+
+Lambda
+A serverless environment. AWS runs our code on demand when we needs to and buildss in 100 ms increments. When that service is not being used AWS doesnt charge us for it
+
+Elastic Beanstalk
+We can take EC2 instances and put them in an ASG, and have its requests distributed through a load balancer or we can use an ELastic Beanstalk. This will automoatically create and deply all our resources in a compute environment. All we have to do is supply it with our application code and it will provide us iwth a way to meet our compute capacity
+
+VPC
+Our own personal and private space within our AWS cloud. No one can have access to our VPC unless we allow them access to do so. Within our VPC we can launch servers in the form of EC2 isntances. These EC2 instances will have a copy of our operating system, our environment and our application.
+
+ASG
+We can use our EC2 instance, create an image of that and use that as a luanch configuration for our ASG. When demand is increased, and a signal is given to the ASG this image will be used to create more EC2 instance.
+
+Horizontal Scaling
+Add more EC2 instances, and when demand decreases reduce the size
+
+Vertical Scaling
+Tear down an EC2 instance and replace it with a bigger EC2 Instances
+
+S3 Storage
+One of the serverless services. With Amazon S3 we can create a bcket, and within that S3 bucket we drop objects. 
+
+GLacier Storage
+Long term archiving and solution, which provides us with low cost storage. However it is not suitable that needs to be accessed on demand because it takes 3-4 hours to access that informtaion.
+
+EBS (Elastic Block Storage)
+This allows us to attach block storage to EC2 Instances. This is simlar to putting a disk drive to our computer. You can put a block storage to an EC2 instances. You cant attach multiple instances to a single EBS volumes. We can only attached to one EC2 Instances at a time. We can put multiple EBS on one EC2 Instances but cant attach multiple EC2 Instances to an EBS. A solution to this (where we want attachment of multiple EC2 Instances) we can use the EFS. 
+
+EFS (Network Attached Storage)
+Storage that is mounted onto our EC2 instances and is accessed asa a drive you neeed to look into network attached storage. You can have a mount point that will mount to our ec2 instances that will have access to efs just as it would have access to EBS. We would create a mount target and we can mount them across multiple EFS instances. 
+		
+
+Amazon Storage Gateway 
+Where we can interface our own premises infrastructure or data that is located within AWS, and we can set up a storage gateway job that can manage the transfer of that data between those two systems of AWS
+
+AWS Import Export Snowball
+This is very good from a deployment perspective. If you are looking to deploy from an on premises solution and you have petabytes of data (Data warehouse), this is going to take you a very long time to deploy this across the internet. AWS will give you a snowball device and you can upload the data onto a snowball and give it to AWS to be uploaded into something like Amazon S3
+
+See storage.png
+
+We have some EC2 instance son our VPC. You may want ot have an extra drive this is where would add an EBS, where we can add only one EC2 instance to an EBS. If you want to have a drive that is mounted and accessed by multiple EC2 instances this is where we would look into EFS(Elastic File Service). We would create a mount target across multiple EC2 instances. We would have an EFS share and EFS mount targets that would allow acces to that EFS share. Network Attached Storage would give the info out. The Amazon S3 service would be located outside the VPC. We can create an S3 endpoitn for  route that allows our EC2 Instances to access our S3 bucket and will be able to put objects inside that S3 bucket and take objects outside of that S3 buckets. Overtime when the items inside that S3 Bucket get old they will get transferred over into Glacier. 
+
+see hybridstorage.png
+
+Hybrid Storage combines AWS storage and our onsite storage located in corporate data center. First when we're deploying our solutions there is going to be a large amount of data that is going to be transferred across to the AWS cloud when were deploying this solution. This is where the import export snowball comes in, where you can take your onsite storage into the snowball device and send it off to AWS. They would then upload this to your AWS Bucket. Once that data is in the AWS cloud, then you need to work on maintaining that and synchronizing that data between the AWS cloud and corporate data center. The transfer of that data is managed using the AWS storage gateway, which orchestrates the data transfer from one location to another. 
+
+DATABASES
+
+RDS (Oracle, MYsql, MariaDB, PostgreSQL)
+
+Aurora: AWS Enterprise version of MySQL
+
+DynamoDB: Serverless NoSQL database
+
+Redshift: Amazon Web Service Data Warehousing solution. Storage of petabytes of data 
+
+ElastiCache: Put regularly accessed data within our cache. This allows high speed memory response. 
+Redis and Memcache are two caching engines for the elasticache service
+
+AWS Database Migration Service: Simplifies and orchestrates one database to another 
+
+see database.png
+
+AWS on the left and a premise onsite database on the right. This could be between a virtual private network . The database migration job manages the transfer of data between the onsite database through ou RDS database located on AWS. To enable high speed access or to reduce the load on our RDS Instance, we can put an elasticCache node in front of that RDS. 
+
+NETWORK AND CONTENT DELIVERY
+VPC
+Restricted within our cloud. People can not access without being granted permission. 
+
+CLOUD FRONT
+Provides caching of our regular used content. Delivers cached content to over 50 edge locations. 
+
+ROUTE 53
+AWS's domain name service, route out traffic through to or from our domain and through to our infrastructure. 
+
+Direct Connect
+High speed connection between our on premise infrastructure and AWS. Access AWS resources without having to go through the internet
+
+ELB 
+
+see network.png
+
+We have our EC2 Instances across multiple availability zones in case one is broken. You can put those inside an AutoScaling Group with health checks. If one of the ec2 instances goes down in one availability zone then the other availability zones will have the ec2 instances lost. If we want to reduce the load on our ec2 servers and want to provide high accessibility to content we can put a cloud front distribution which will take regularly accessed dat and provide this content to over 50 edge locations across the globe. If this data is not accessible via the cloudfront distribution then it will go through cloudfront and on into the backend and through route 53 and delivered back to the end user. If this data is within cloud front it will be delivered within cloud 53. On the right we have a corporate data center. If we want to link up our corporate data center to our AWS account, we may not want to go through the wider internet and come back in again. In order to go there directly we can set up an AWS direct connect connetion which is a high speed fiber optic connection. 
+
+MANAGEMENT TOOLS
+
+Cloud Formation (SysOps Administrator, Developer Use Generally)
+You can write a JSON document or a YAML document and you can define what our architecture should be. Our cloud formation service will take that template and create a cloud formation stack and deploy that automatically. This is very useful because we can use VCS to manage the YAML or JSON File. For example if we weant to change our architecture we can change our JSON object or our YAML file and we redeploy our infrastructure. 
+
+CloudWatch
+Monitoring of our services (we can monitor our server), and we can give off alarms if our server gets overloaded. We can use cloud watch alarms for events on autoscaling groups. If ec2 severs are getting overloaded in an autoscaling group, the CloudWatch can alarm autoscaling groups tao make more ec2 instances. If the demand on the ec2 instance goes below a certain level, then we can set an alarm on the autoscaling group to reduce the number of ec2 instances. 
+
+OpsWorks 
+Chef recipes are used for deployment of infrastructure. 
+
+CloudTrail
+Good service for security and auditing perspectives. This monitors our API calls on our infrastructure. If we have an attack from a rogue employee or our file. We can monitoranything that is happening in the AWS console using the AWS console interface, this will make an API call to AWS and will be picked up by cloud trail. If you find out something suspicious was happening this is useful. Cloud Trail logs are useful to tell us what happened security wise
+
+Trusted Adviser
+This will analyze our infrastructure and advise us on our security and whatnot
+
+
+MESSAGING
+SQS (Simple Queue Services)
+A serverless service for decoupling our applications from demand. If we have an application that is processing messages, we can use SQS in front of our application. If our application recieves a massive amount of demand, those requests for processing will go into the queue until our appliation will process that and reduce our queue size. 
+
+SNS (Simple Notification Services)
+Publish and scribe messaging. You would create an SNS topic and publish a message to the SNS topic. Anyoneo who is subscribed to that tpoic will receive that message. It can also be used for mobile push notification. If you would like to send push notifciations to an iphone or android devices. 
+
+Simple Email Service (SES)
+Providing bulk delivery of email
+
+see messages.png
+
+We have instances that are processing messages that are coming in. If we have a whole hip of messages coming in at once this will crash our EC2 servers. To decouple the demand from our process we can put an SQSqueue in front of those EC2 Instances. When the messages come that will build up into the quee. The instances will poll the queue, and will process the message and delete it from the queue. Sometimes there is so much demand that the SQS queue can crash as well. To avoid this we can have an autoscaling group managing our instances, and have a cloud watch metric from the cloud watch service that can trigger an alarm to scale out and scale in (make more or reduce) instances. By that well have an optimal solution. The cloud watch metric can check the SQS queue to see its size and then send messages to the autoscaling group. If there is a bug in the application code and the instance isnt reading the messages properly then the SQS queue will continue to grow. Then when the cloud watch metric gets really high we can have the SNS email notification send the administrator an email warning him about very longa SQS queue.
+
+Security Identity and Compliance
+IAM (Identity and Access Management)
+How we manage access to our AWS accounts. When we create our AWS account, we hae a login as a root. We create different users our AWS account and have fine grain control over permissions that they have of our AWS account. We can have a general user, or an administrator user, or a finance user. We can group these users into IAM groups and have roles that allow ec2 servers to access various parts of our AWS account. 
+
+Directory Service
+You may have a mobile aplication that have millions of users, and they need to put stuff into Amazon S3 buckets. AWS directory service will use AWS cognito, which will authetnicate our users based upon facebook or google etc. This can be used as a service for Microsoft Access Directory as well to get access into LDAP services as well
+
+Certificate Manager
+We can create SSL certificates so we have HTTPS encrypted traffic to and from our websites. 
+
+Encryption Key Management Service
+Manages our encryption keys for our data 
+
+Web Application Firewall
+Firewall we can put in front of our infrastructure.
+
+ANALYTICS
+
+Elastic Map Reduce (EMR)
+Hadoop as a service. This will allow you to analyze large amounts of data.
+
+ElasticSearch
+Search Engine Capability for our Applications
+
+Kinsesis
+Collect realtime data as streams and analyze them at real time. 
+
+Amazon QuickSight
+Can be used with Kinsesis to provide data visualization. 
+
+Data Pipeline
+allows us to process and move data between different applications
+ 
+
+ 

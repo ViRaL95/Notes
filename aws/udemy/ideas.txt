@@ -1,0 +1,1 @@
+Possible solution where data gets moved from S3 to glacier if data is not current, and needs to get archived for compliance. We can set up a rule which can do this for us 

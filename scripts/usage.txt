@@ -1,0 +1,18 @@
+$0 expands the name of the shell or shell script. If bash is invoked with a file of commands, $0 is set to the name of that file. For example if you did a 'echo $0' in bash you will be returned the name of the shell (bash). If you had echo $0 within a bash script, and then invoked it the name of the script would be printed out. $0 within a shell tells you if you are in an interactive login shell.
+
+1)Login Shells
+A login shell is started after as uccesful login, using /bin/login by reading the /etc/passwd file. When bash is invoked as a login shell the following happens
+- login process calls /etc/profile
+- /etc/profile calls the scripts in /etc/profile.d
+- login process calls ~/.bash_profile
+~/.bash_profile calls /.bashrc
+~/.bashrc calls /etc/bashrc
+
+2) Non login shells
+A non login shell is started by a program without a login. When bash is invoked as a Non login shell 
+-non login process calls ~/.bashrc
+-~/.bashrc calls /etc/bashrc
+/etc/bashrc calls the scripts in /etc/profile.d/
+
+.profile is read by many shells in the absence of their own shell-specific config files. 
+-

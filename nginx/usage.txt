@@ -1,0 +1,20 @@
+The nginx configuration file 
+
+location / {
+	root /data/www
+
+}
+This location block specifices the / prefix compared with teh URI from teh request. For matching reuqests the URI will be added o teh path specified in the root directive. 
+
+Generally the configuration file may include server blocks distinguished by ports on which theyh listen to and by server names. 
+
+try_files
+
+location / { try_files $uri @helloworld; }
+
+location @helloworld {
+    include uwsgi_params;
+    uwsgi_pass unix:/opt/helloworld/helloworld_uwsgi.sock;
+}
+
+The following piece of code will try to find the uri, if this doesnt work the fallback will be redirected to the @helloworld location

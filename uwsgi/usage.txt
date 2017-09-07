@@ -1,0 +1,13 @@
+uWSGI emperor
+If you need to deploy a big number of apps on a single server, or a group of servers, you can use the emperor. 
+
+Magic Variables
+%d the absolute path of the directory containing the configuration file 
+%n filename without extension
+cd ~
+
+Configuring NGinx
+Generally you only ned to include the uwsgi_params file and set the address of the uWSGI socket with the uwsgi_pass directorive 
+
+uwsgi_pass unix:/opt/onboardapp
+

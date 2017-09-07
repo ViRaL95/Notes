@@ -1,0 +1,11 @@
+SCP (secure copy) allows files to be copied to, form and betwen different hosts. It uses SSH for data transfer and provides the same authentication and same level of security 
+
+To copy file from your local machine into the downloads directory of a remote host
+scp foobar.txt your_username@IPaddress:~/Downloads
+
+To copy files from the Downloads directory of a remote server into your local machine 
+scp your_username@IPaddress:~/Downloads ~/directory
+
+Copy files from remote host rhl.edu to remote host rh2.edu
+scp your_username@IP_address1:/some/directory your_username@IP_address2:/some/directory
+
