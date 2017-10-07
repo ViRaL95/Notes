@@ -1,0 +1,10 @@
+/dev is the part of the unix directory tree that contains all device files. 
+sd originally identifies a SCI device.
+
+The letter immediately after sd signifies the order in which it was first round a,b,c..z. Tinally the number after that signifies the partition on the device.
+
+When making a live boot usb. You can use fdisk to find the device name of the flash drie. This flash drive name can be used to write the ISO file to the flash drive.c
+
+When a usb is plugged in you have the logs of the kernel dumped to /var/log/syslog. You can use dmesg to dump the files to /var/log/syslog. 
+
+Look into live-iso-to-disk if you want ot burn stuf

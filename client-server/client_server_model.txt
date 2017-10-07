@@ -3,3 +3,26 @@ The service requesters are called clients
 Client sends a request and the server returns a response. 
 To formalize data exchange even futher, the server may implement an application programming interface (API)
 
+HTTP vs HTTPS
+
+HTTP = Hyper Text Transfer Protocol
+Stateless Protocl = Does not have to retain information about each user. However this can be done using sessions, http cookies, or url rewriting.HTTP is made of 3 blocks
+
+3 Blocks:
+Start-Line: Method, uri, HTTP Method ex: GET /pages/index.html HTTP /1:0
+
+Headers: Name value pairs. HOST(addreses of the server where we are sending the request), Accept(Accept type we are requesting), Accept-language: en-us. 
+
+Body: Contains the files we are connected
+
+HTTP is insecure because information is not encrypted. It is easy to put yourself in the middle and catch information.
+
+HTTPS (Hypper Text Transfer Protocol Secure)
+
+HTTP over TLS
+HTTP over SSL
+HTTP Secure
+
+Information is encrypted.
+
+To secure the website you have to purchase an SSL certifiate. SSL certificate is like an online verification card. the SSL certificat will encrypt any information. 

@@ -1,0 +1,27 @@
+Device is usually a disk partition. You generally do this when you have corruptted the data inside the USB and you have RAW files in it only, so you format it. You can create partitions on a device by running fdisk device_name. When you plug in your USB device to your Linux System it will add a new block device into the /dev/ directory. To verify this you can run the command fdisk -l. You cn delete partitions by running
+
+dd if=/dev/zero of=/dev/sdb bs=512. 
+
+/dev/zero represents the null character. You can also delete partitions by running fdisk and the name of the device and delete the partitions.  
+
+You can then mount the USB by using the following command. Mounting is generally done when the disk cant be found, for example if you plug in a USB and your computer cant find it you can mount it. 
+ 
+mount /dev/sdb1 /mnt.
+When you mount a file system it adds an entry in /etc/fstab
+To create a directory in the mounted device you must cd /mnt
+
+mkdir directory. 
+
+YOu must then unmount the device first to format the USB device. 
+
+sudo umount /dev/sdb1
+
+When you umount the device you will see the device in your files
+
+To format a USB derive you generally must use VFAT or NTFS file systems. 
+
+sudo mkfs.vfat /dev/sdb1
+
+When you format the device everything will be deleted
+
+
