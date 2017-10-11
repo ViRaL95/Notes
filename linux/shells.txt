@@ -1,0 +1,22 @@
+Login shell logs you into the system as a specified user, necessary for this is a username and password. A login shell is the first process that executes under you user ID when you log in for an interactive session. The login process tells the shell to behave as a login shell. Login shells typically reada  file that does things like setting environment variables.
+Sourced Files:
+Login procss calls /etc/profile
+/etc/profile calls the scripts in /etc/profile.d/
+Login process calls ~/.bash_profile
+
+One can tell if they are a login shell or not by executing the following command: echo $0
+
+If the output is the name of the shell prepended by a dash then it is a login shell, if not then it isnt a login shell
+
+A non login shell is started by a program without a login. In this case, the program just passes the name of the shell executable. For example for a bash shell it would simply be bash.
+
+
+When bash is invoked as a non login shell
+- ~/.bashrc
+- /etc/bashrc
+/etc/bashrc calls the scripts in /etc/profile.d
+
+Gnome, the shell i am running, is non login shell
+
+
+

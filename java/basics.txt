@@ -1,0 +1,7 @@
+JDK is a subset of the SDK.
+Java Platform, Standard Edition (Java SE) lets you develop and deploy Java Applications on desktops and servers.
+
+Java EE is the standard in community driven enterpise software. Java EE Is developed using the Java Community Process, with contributions from industry experts, commercil and open souce organizations. This is for large scale, distributed systems generally. 
+
+Java ME = Micro Editio. This is the platform for developing applications for mobile devices and embedded systems such as set-top boxes. Java ME provides a subset of functionality of Java SE but introduces library specific to mobile devices. 
+

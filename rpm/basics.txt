@@ -1,0 +1,2 @@
+rpm -qa //queries all rpm's 
+rpm -e //erases an rpm 
