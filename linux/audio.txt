@@ -1,0 +1,15 @@
+Audio Card settings are found in file:  /proc/asound/cards
+Issue: F3 KEY Generally used to increase volume now displays dummy output. Reason being no audio card detected.
+
+After some searching it may be pulse audio causing the issue.
+
+Steps To Resolve: 
+
+Run alsa-info.sh --no-upload
+
+This will generate a file containing detailed informtion about your sound hardware with the name /tmp/also-info.txt as quoted from https://fedoraproject.org/wiki/How_to_debug_sound_problems
+
+1) Testing If The Bug is Related to Pulse Audio or not
+    The package named alsa-plugins-pulseaudio allows any programs that use the ALSA API to access a PulseAudio sound daemon (you should know what this is lol). In other words, native ALSA applications can play and record sound across a network. By removing this file we are able to see whether the bug is pulse audio related or not. In lehman terms the issue is sound is being played through pulse audio and we will reconfigure it to ALSA. Package was removed from dnf, issue didn't resolve immediately. Turned the computer on, and off and I assume files involving noise and audio from laptop were reset.
+
+I guess an ongoing issue? Lol
